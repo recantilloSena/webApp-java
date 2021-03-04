@@ -69,6 +69,7 @@
               Long total = lista.stream().count();
               %>
               <div class="card-body">
+                  
               <div class="container">
               
                  <div> Tabla de Aprendices  </div>
