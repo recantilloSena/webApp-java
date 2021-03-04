@@ -63,7 +63,11 @@
             controlador.conectar();
             
              if (controlador.hayConexion() ) {
-                                          //llamar a los métodos de mi CONTROLADOR 
+                                          
+              //Almacenar la conexión en una Variable de Session                            
+              session.setAttribute("controlador",controlador); 
+              
+              //llamar a los métodos de mi CONTROLADOR
               List<Aprendices> lista  =   controlador.findAllAprendices();
               
               Long total = lista.stream().count();
