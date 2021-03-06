@@ -4,9 +4,10 @@
     Author     : RICARDO
 --%>
 
+<%@page import="com.adsi.modelo.Cursos"%>
+<%@page import="com.adsi.controlador.DataService"%>
 <%@page import="com.adsi.modelo.Aprendices"%>
 <%@page import="java.util.List"%>
-<%@page import="com.adsi.controlador.Controlador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
@@ -58,23 +59,27 @@
         
         
         <%
-            Controlador controlador = new Controlador();
+            DataService dataService = new DataService();
             
-            controlador.conectar();
+           // if (dataService.hayConexion()) {
             
-             if (controlador.hayConexion() ) {
-                                          
               //Almacenar la conexión en una Variable de Session                            
-              session.setAttribute("controlador",controlador); 
+              session.setAttribute("dataService",dataService); 
               
               //llamar a los métodos de mi CONTROLADOR
-              List<Aprendices> lista  =   controlador.findAllAprendices();
+              List<Aprendices> lista   =   dataService.aprendicesService().findAllAprendices();
+              List<Cursos> listaCursos =   dataService.cursosService().findAllCursos();
               
-              Long total = lista.stream().count();
+              Long total        = lista.stream().count();
+              Long totalCursos  = listaCursos.stream().count();
+              
               %>
+              
+              <div class="container">
+                  
               <div class="card-body">
                   
-              <div class="container">
+              
               
                  <div> Tabla de Aprendices  </div>
                  <div class="table-responsive">
@@ -123,14 +128,15 @@
                 
                  
                  <%=total%>
-                 
+                 <%=totalCursos%>
+                  
               
               
                 <% 
                     
                      
                  
-             }
+           //  }
             
             
         
