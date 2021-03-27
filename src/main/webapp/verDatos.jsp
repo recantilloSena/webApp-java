@@ -75,6 +75,29 @@
               
               %>
               
+              <div class="card-body">
+                      <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option selected>Seleccione el Curso</option>
+                        <%
+                        for (Cursos curso :listaCursos ) {
+                        
+                        %>    
+                        <option value="<%=curso.getIdCurso()%>"><%=curso.getNombreCurso() %></option>
+                        
+                        <%
+                        }
+                        
+                        %>
+                        
+                        
+                        
+                      </select>
+            
+            
+              </div>
+              
+              
+              
               <div class="container">
                   
               <div class="card-body">
@@ -147,10 +170,11 @@
         1. Conectarme a la base datos
         2. Ejecutar los comandos que deseo.
           Insert into datos values (email,password,direccion, fecha );
-        
+            
         
         -->
-        
+          </div>
+     
         
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
